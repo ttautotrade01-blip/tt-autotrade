@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TT AUTOTRADE - ศูนย์รวมรถมือสองคัดเกรด</title>
+    <title>TT AUTOTRADE - ศูนย์รวมรถมือสองคัดเกรดคุณภาพ A+</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,18 +12,13 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#eefbf3',
-                            100: '#d5f5e2',
+                            400: '#4ade80',
                             500: '#22c55e',
                             600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
                             neon: '#39FF14'
                         },
                         darkbg: '#09090b',
-                        cardbg: '#18181b',
-                        surface: '#27272a'
+                        cardbg: '#18181b'
                     }
                 }
             }
@@ -32,249 +27,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Kanit', 'Inter', sans-serif;
-            background-color: #09090b;
-            color: #f4f4f5;
-        }
-        .bg-grid-pattern {
-            background-image: radial-gradient(rgba(34, 197, 94, 0.12) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #09090b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #27272a;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #16a34a;
-        }
+        body { font-family: 'Kanit', sans-serif; background-color: #09090b; color: #f4f4f5; }
+        .bg-grid-pattern { background-image: radial-gradient(rgba(34, 197, 94, 0.15) 1px, transparent 1px); background-size: 28px 28px; }
+        .neon-glow { box-shadow: 0 0 35px -5px rgba(34, 197, 94, 0.3); }
+        .neon-glow-btn { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
     </style>
 </head>
-<body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col selection:bg-brand-500 selection:text-black">
+<body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-black">
 
-    <!-- Top Promo Bar -->
-    <div class="bg-gradient-to-r from-zinc-900 via-brand-900/40 to-zinc-900 border-b border-brand-500/20 py-2 px-4 text-xs md:text-sm text-center font-medium">
-        <span class="text-brand-400 font-bold"><i class="fa-solid fa-fire mr-1 animate-pulse"></i> โปรโมชันพิเศษ TT AUTOTRADE!</span> ดอกเบี้ยเริ่มต้น 2.79% ออกรถ 0 บาท ฟรีประกันภัยชั้น 1
-        <a href="tel:0831419999" class="ml-3 underline text-white hover:text-brand-400 transition"><i class="fa-solid fa-phone text-xs"></i> 083-141-9999</a>
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-zinc-900 via-emerald-950 to-zinc-900 border-b border-brand-500/30 py-2.5 px-4 text-center text-xs md:text-sm font-medium">
+        <span class="text-brand-400 font-bold"><i class="fa-solid fa-fire mr-1 animate-pulse"></i> โปรโมชันพิเศษ!</span> ออกรถ 0 บาท ดอกเบี้ยเริ่มต้น 2.79% ฟรีประกันภัยชั้น 1
     </div>
 
-    <!-- Navigation Header -->
-    <header class="sticky top-0 z-50 bg-darkbg/90 backdrop-blur-md border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Minimal Header -->
+    <header class="bg-darkbg/90 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-black font-black text-xl shadow-md shadow-brand-500/20 border-2 border-brand-400">
+                <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-black font-black text-xl border-2 border-brand-400 shadow-md shadow-brand-500/30">
                     TT
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                    <h1 class="text-xl font-extrabold text-white tracking-wide flex items-center gap-2">
                         TT AUTOTRADE
                     </h1>
-                    <p class="text-xs text-zinc-400 font-normal">ซื้อสด โอนไว เกรด A - รถมือสองคัดเกรด</p>
+                    <p class="text-xs text-zinc-400 font-light">ซื้อสด โอนไว เกรด A - รถมือสองคัดเกรด</p>
                 </div>
             </div>
-
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="#" class="text-brand-400 font-semibold flex items-center gap-2"><i class="fa-solid fa-house text-xs"></i> หน้าแรก</a>
-                <a href="#inventory" class="text-zinc-300 hover:text-brand-400 transition flex items-center gap-2"><i class="fa-solid fa-car text-xs"></i> รถมือสองทั้งหมด</a>
-                <a href="#finance" class="text-zinc-300 hover:text-brand-400 transition flex items-center gap-2"><i class="fa-solid fa-calculator text-xs"></i> คํานวณค่างวด</a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-sm font-medium transition shadow-md shadow-emerald-600/20">
-                    <i class="fa-brands fa-line text-lg"></i> Line: @ttautotrade
-                </a>
-                <a href="tel:0831419999" class="flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-black font-bold px-4 py-2 rounded-xl text-sm transition shadow-lg shadow-brand-500/25">
-                    <i class="fa-solid fa-phone"></i> 083-141-9999
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Banner -->
-    <section class="relative overflow-hidden bg-zinc-950 py-16 lg:py-24 border-b border-zinc-800">
-        <div class="absolute inset-0 bg-gradient-to-r from-darkbg via-darkbg/90 to-transparent z-0"></div>
-        <div class="absolute inset-0 bg-grid-pattern z-0 opacity-40"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-12 gap-8 items-center">
-            <div class="md:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/30 px-3.5 py-1.5 rounded-full text-xs font-semibold text-brand-400">
-                    <i class="fa-solid fa-shield-halved"></i> TT AUTOTRADE - คัดสภาพสวยเดิม ไม่ชนหนัก ไม่จมน้ำ 100%
-                </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
-                    ศูนย์รวมรถมือสองคัดเกรด <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-200">พร้อมบริการจัดไฟแนนซ์ฟรี</span>
-                </h1>
-                <p class="text-zinc-400 text-base sm:text-lg max-w-2xl font-light leading-relaxed">
-                    เลือกรถยนต์คุณภาพเยี่ยมผ่านโชว์รูม TT AUTOTRADE มีบริการจัดส่งทั่วประเทศ ออกรถง่าย อนุมัติไว ได้รถพร้อมใช้งานทันที
-                </p>
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#inventory" class="bg-brand-500 hover:bg-brand-600 text-black font-bold px-7 py-3.5 rounded-xl transition flex items-center gap-2 shadow-lg shadow-brand-500/25">
-                        <i class="fa-solid fa-magnifying-glass"></i> ดูสต็อกรถทั้งหมด
-                    </a>
-                    <a href="tel:0831419999" class="bg-zinc-800 hover:bg-zinc-700 text-white font-semibold px-6 py-3.5 rounded-xl transition border border-zinc-700 flex items-center gap-2">
-                        <i class="fa-solid fa-phone text-brand-400"></i> โทร 083-141-9999
-                    </a>
-                </div>
-            </div>
-
-            <div class="md:col-span-5">
-                <div class="bg-cardbg/80 backdrop-blur-md border border-zinc-800 p-6 rounded-2xl shadow-2xl relative overflow-hidden">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-brand-500/20 rounded-lg flex items-center justify-center text-brand-400 font-bold">
-                            <i class="fa-solid fa-award text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-white text-lg">รับประกันคุณภาพเกรด A+</h3>
-                            <p class="text-xs text-zinc-400">ผ่านการตรวจเช็กสภาพอย่างละเอียดทุกคัน</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-3 text-sm text-zinc-300">
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-400"></i> การันตีไม่มีชนหนัก พลิกคว่ำ หรือจมน้ำ</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-400"></i> บริการส่งรถด้วยรถสไลด์ทั่วประเทศ</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-400"></i> ดอกเบี้ยพิเศษเริ่มต้นเพียง 2.79%</li>
-                        <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-brand-400"></i> มีสถาบันการเงินรองรับมากกว่า 10 แห่ง</li>
-                    </ul>
-                    <div class="mt-6 pt-4 border-t border-zinc-800">
-                        <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="w-full bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 font-semibold py-2.5 rounded-xl transition flex items-center justify-center gap-2 text-sm">
-                            <i class="fa-brands fa-line text-lg"></i> สอบถามข้อมูลเพิ่มเติมผ่าน Line
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Content Stock Section -->
-    <main id="inventory" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-            <div>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
-                    <i class="fa-solid fa-car-side text-brand-400"></i> รายการรถมือสองพร้อมขาย
-                </h2>
-                <p class="text-zinc-400 text-sm mt-1">เลือกรถที่ต้องการและดูรายละเอียดรูปภาพคันจริงได้ทันที</p>
-            </div>
-        </div>
-
-        <!-- Inventory Details with Gallery -->
-        <div class="bg-cardbg rounded-2xl overflow-hidden border border-zinc-800 p-6 md:p-8 shadow-2xl space-y-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- Main Cover Image -->
-                <div class="lg:col-span-7 space-y-4">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[16/9] bg-zinc-900 border border-zinc-800">
-                        <img id="main-car-img" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop" alt="Honda City RS Front Cover" class="w-full h-full object-cover transition duration-300">
-                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-400 border border-brand-500/30">
-                            รถเข้าใหม่ / คลิกรูปด้านล่างเพื่อเปลี่ยนรูปใหญ่
-                        </div>
-                    </div>
-
-                    <!-- Thumbnails List (Direct Reliable Image URLs) -->
-                    <div class="grid grid-cols-5 gap-2 pt-2">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-brand-500 cursor-pointer hover:opacity-80 transition" title="มุมหน้าเฉียง">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="มุมหน้าตรง">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="มุมท้ายตรง">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="มุมท้ายเฉียง">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="เบาะคู่หน้า">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1563720223185-11003d516935?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="เบาะหลัง">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="คอนโซลกลาง">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="พวงมาลัย">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="หน้าจอสัมผัส">
-                        <img onclick="changeImage('https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=1200&auto=format&fit=crop')" src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=300&auto=format&fit=crop" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="ห้องเครื่อง">
-                    </div>
-                </div>
-
-                <!-- Info Details -->
-                <div class="lg:col-span-5 space-y-6">
-                    <div>
-                        <div class="flex items-center gap-2 text-xs font-semibold text-brand-400 mb-2">
-                            <span class="bg-brand-500/10 px-2.5 py-1 rounded-md border border-brand-500/20">ปี 2022</span>
-                            <span class="bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-md">เกียร์อัตโนมัติ</span>
-                            <span class="bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-md">เบนซิน ไฮบริด</span>
-                        </div>
-                        <h3 class="text-2xl sm:text-3xl font-black text-white leading-tight">
-                            Honda City 1.5 RS e:HEV 2022
-                        </h3>
-                        <p class="text-zinc-400 text-sm mt-3 leading-relaxed font-light">
-                            ตัวท็อปสุด RS สภาพสวยป้ายแดง ประหยัดน้ำมันสุดๆ ด้วยระบบ e:HEV ไฮบริด อุปกรณ์อำนวยความสะดวกครบครัน สภาพเดิมโรงงาน เบาะหนังสีดำด้ายแดงทรงสปอร์ตสวยสะอาด
-                        </p>
-                    </div>
-
-                    <div class="bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 space-y-2">
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-zinc-400">สถานะรถ</span>
-                            <span class="text-emerald-400 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> พร้อมส่งมอบ</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="text-zinc-400">เอกสารการโอน</span>
-                            <span class="text-white font-medium">ชุดโอนครบ พร้อมโอนทันที</span>
-                        </div>
-                        <div class="flex justify-between items-center text-sm pt-2 border-t border-zinc-800">
-                            <span class="text-zinc-400">ข้อเสนอพิเศษ</span>
-                            <span class="text-brand-400 font-bold">ฟรีค่าจัด ฟรีค่าโอน</span>
-                        </div>
-                    </div>
-
-                    <div class="pt-2 space-y-3">
-                        <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="w-full bg-brand-500 hover:bg-brand-600 text-black font-bold py-3.5 rounded-xl text-center block transition shadow-lg shadow-brand-500/25">
-                            <i class="fa-brands fa-line text-lg mr-1"></i> สอบถามราคาพิเศษผ่าน Line
-                        </a>
-                        <a href="https://drive.google.com/drive/folders/1GODEEjOFA3B6NOzUrcWuYZjdw0ssE4G1?usp=sharing" target="_blank" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-medium py-3 rounded-xl text-center block transition border border-zinc-700 text-sm">
-                            <i class="fa-solid fa-folder-open text-brand-400 mr-1"></i> สำรองไฟล์รูปใน Google Drive
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-zinc-950 border-t border-zinc-800 py-12 text-zinc-400 text-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-9 h-9 bg-brand-500 rounded-lg flex items-center justify-center text-black font-black text-xl">
-                        TT
-                    </div>
-                    <span class="text-lg font-bold text-white">TT AUTOTRADE</span>
-                </div>
-                <p class="text-xs text-zinc-400 leading-relaxed">
-                    โชว์รูมรถมือสองคุณภาพคัดเกรด A+ บริการซื้อ-ขาย-เทิร์น รถยนต์มือสองทุกรุ่น ดอกเบี้ยถูก อนุมัติไว จัดส่งทั่วไทย
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">ติดต่อเรา</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><i class="fa-solid fa-phone text-brand-400 w-5"></i> โทร: 083-141-9999</li>
-                    <li><i class="fa-brands fa-line text-brand-400 w-5"></i> Line: @ttautotrade</li>
-                    <li><i class="fa-solid fa-clock text-brand-400 w-5"></i> เปิดบริการทุกวันจันทร์ - เสาร์ (09:00 - 18:00 น.)</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">ที่อยู่โชว์รูม</h4>
-                <p class="text-xs leading-relaxed">
-                    บริษัท ทีที ออโต้ เทรด จำกัด <br>
-                    บริการจัดส่งรถด้วยรถสไลด์ทั่วประเทศ
-                </p>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-900 pt-6 text-center text-xs text-zinc-600">
-            © 2026 TT AUTOTRADE. All Rights Reserved.
-        </div>
-    </footer>
-
-    <!-- Script to Handle Gallery Click -->
-    <script>
-        function changeImage(src) {
-            document.getElementById('main-car-img').src = src;
-        }
-    </script>
-</body>
-</html>
+            
+            <a href="tel:0831419999" class="bg-brand-500 hover:bg-brand-600 text-black font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-brand-500/25">
+                <i class="fa-solid fa-phone"></i> โทร 083-141-9999
+            </a>
