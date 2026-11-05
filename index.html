@@ -18,7 +18,8 @@
                             neon: '#39FF14'
                         },
                         darkbg: '#09090b',
-                        cardbg: '#18181b'
+                        cardbg: '#18181b',
+                        surface: '#27272a'
                     }
                 }
             }
@@ -31,64 +32,143 @@
     <style>
         body { font-family: 'Kanit', sans-serif; background-color: #09090b; color: #f4f4f5; }
         .bg-grid-pattern { background-image: radial-gradient(rgba(34, 197, 94, 0.15) 1px, transparent 1px); background-size: 28px 28px; }
-        .neon-glow { box-shadow: 0 0 35px -5px rgba(34, 197, 94, 0.3); }
-        .neon-glow-btn { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+        .neon-glow { box-shadow: 0 0 35px -5px rgba(34, 197, 94, 0.25); }
     </style>
 </head>
 <body class="bg-darkbg text-zinc-100 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-black">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-zinc-900 via-emerald-950 to-zinc-900 border-b border-brand-500/30 py-2.5 px-4 text-center text-xs md:text-sm font-medium">
+    <div class="bg-gradient-to-r from-zinc-900 via-emerald-950 to-zinc-900 border-b border-brand-500/30 py-2 px-4 text-center text-xs md:text-sm font-medium">
         <span class="text-brand-400 font-bold"><i class="fa-solid fa-fire mr-1 animate-pulse"></i> โปรโมชันพิเศษ!</span> ออกรถ 0 บาท ดอกเบี้ยเริ่มต้น 2.79% ฟรีประกันภัยชั้น 1
     </div>
 
-    <!-- Minimal Header -->
-    <header class="bg-darkbg/90 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center text-black font-black text-xl border-2 border-brand-400 shadow-md shadow-brand-500/30">
+    <!-- Main Header & Navigation -->
+    <header class="bg-darkbg/95 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <a href="./index.html" class="flex items-center gap-3">
+                <div class="w-11 h-11 bg-brand-500 rounded-full flex items-center justify-center text-black font-black text-xl border-2 border-brand-400 shadow-md shadow-brand-500/30">
                     TT
                 </div>
                 <div>
-                    <h1 class="text-xl font-extrabold text-white tracking-wide flex items-center gap-2">
-                        TT AUTOTRADE
-                    </h1>
-                    <p class="text-xs text-zinc-400 font-light">ซื้อสด โอนไว เกรด A - รถมือสองคัดเกรด</p>
+                    <h1 class="text-lg font-extrabold text-white tracking-wide">TT AUTOTRADE</h1>
+                    <p class="text-[11px] text-zinc-400 font-light">ซื้อสด โอนไว เกรด A</p>
                 </div>
-            </div>
-            
-            <a href="tel:0831419999" class="bg-brand-500 hover:bg-brand-600 text-black font-bold px-5 py-2.5 rounded-xl text-sm transition flex items-center gap-2 shadow-lg shadow-brand-500/25">
-                <i class="fa-solid fa-phone"></i> โทร 083-141-9999
+            </a>
+
+            <!-- Navigation Links (ปุ่มเมนูหลัก) -->
+            <nav class="hidden md:flex items-center gap-1 bg-surface/60 border border-zinc-800 p-1.5 rounded-2xl">
+                <a href="./index.html" class="px-4 py-2 rounded-xl text-sm font-bold bg-brand-500 text-black shadow-md shadow-brand-500/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-house"></i> หน้าแรก
+                </a>
+                <a href="#inventory" class="px-4 py-2 rounded-xl text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800 transition flex items-center gap-2">
+                    <i class="fa-solid fa-car"></i> รถมือสองทั้งหมด
+                </a>
+                <a href="#search-section" class="px-4 py-2 rounded-xl text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800 transition flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass"></i> ค้นหารถ
+                </a>
+            </nav>
+
+            <!-- Phone CTA Button -->
+            <a href="tel:0831419999" class="bg-brand-500 hover:bg-brand-600 text-black font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-brand-500/20">
+                <i class="fa-solid fa-phone"></i> <span class="hidden sm:inline">โทร</span> 083-141-9999
+            </a>
+        </div>
+
+        <!-- Mobile Menu Bar -->
+        <div class="flex md:hidden border-t border-zinc-800 bg-zinc-950 px-2 py-2 justify-around text-xs font-medium text-zinc-300">
+            <a href="./index.html" class="text-brand-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-house"></i> หน้าแรก
+            </a>
+            <a href="#inventory" class="flex items-center gap-1.5 hover:text-white">
+                <i class="fa-solid fa-car"></i> รถมือสองทั้งหมด
+            </a>
+            <a href="#search-section" class="flex items-center gap-1.5 hover:text-white">
+                <i class="fa-solid fa-magnifying-glass"></i> ค้นหารถ
             </a>
         </div>
     </header>
 
-    <!-- Main Hero Section -->
-    <main class="relative max-w-5xl mx-auto px-4 py-10 flex-grow flex flex-col items-center justify-center space-y-8">
+    <!-- Main Content Section -->
+    <main class="relative max-w-7xl mx-auto px-4 py-8 flex-grow space-y-8">
         
-        <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none -z-10"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none -z-10"></div>
 
-        <!-- Headline Text -->
-        <div class="text-center space-y-2 max-w-2xl">
-            <span class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/30 px-4 py-1.5 rounded-full text-xs font-semibold text-brand-400">
-                <i class="fa-solid fa-shield-halved"></i> คัดสภาพสวยเดิม ไม่ชนหนัก ไม่จมน้ำ 100%
-            </span>
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
-                ศูนย์รวมรถมือสองคุณภาพ <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-emerald-200">พร้อมบริการจัดไฟแนนซ์</span>
-            </h2>
+        <!-- Hero Section Grid: Banner + Quick Search Card -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            
+            <!-- Left Banner (8 Columns) -->
+            <div class="lg:col-span-8 space-y-4">
+                <div class="w-full rounded-2xl overflow-hidden border border-brand-500/30 neon-glow bg-cardbg">
+                    <img src="./cover.jpg" alt="TT AUTOTRADE โปรโมชัน ECO CAR ฟรียาง 4 เส้น" class="w-full h-auto object-cover block" onerror="this.src='https://i.postimg.cc/7CgPRSc1/1.jpg'">
+                </div>
+            </div>
+
+            <!-- Right Quick Search Sidebar (4 Columns) -->
+            <div id="search-section" class="lg:col-span-4 bg-cardbg border border-zinc-800 rounded-2xl p-5 space-y-4 shadow-xl">
+                <div>
+                    <span class="text-xs font-bold text-brand-400 uppercase tracking-wider">FIND YOUR CAR</span>
+                    <h3 class="text-xl font-extrabold text-white flex items-center gap-2 mt-0.5">
+                        <i class="fa-solid fa-magnifying-glass text-brand-500"></i> ค้นหารถยนต์มือสอง
+                    </h3>
+                    <p class="text-xs text-zinc-400 mt-1">เลือกประเภทรถตามสไตล์ที่ใช่สำหรับคุณ</p>
+                </div>
+
+                <!-- Search Categories -->
+                <div class="space-y-2">
+                    <a href="#inventory" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 bg-zinc-800 group-hover:bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-car-side text-base"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-white group-hover:text-brand-400">รถเก๋ง / Sedan</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-zinc-500 group-hover:text-white"></i>
+                    </a>
+
+                    <a href="#inventory" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 bg-zinc-800 group-hover:bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-truck-pickup text-base"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-white group-hover:text-brand-400">รถกระบะ / Pickup</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-zinc-500 group-hover:text-white"></i>
+                    </a>
+
+                    <a href="#inventory" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 bg-zinc-800 group-hover:bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-car-rear text-base"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="text-sm font-bold text-white group-hover:text-brand-400">รถอเนกประสงค์ / SUV</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-zinc-500 group-hover:text-white"></i>
+                    </a>
+
+                    <a href="#inventory" class="w-full bg-brand-500 hover:bg-brand-600 text-black font-bold p-3.5 rounded-xl flex items-center justify-between transition shadow-lg shadow-brand-500/20 mt-3">
+                        <span class="flex items-center gap-2 text-sm">
+                            <i class="fa-solid fa-list-ul"></i> ดูรถมือสองทั้งหมด
+                        </span>
+                        <i class="fa-solid fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Main Banner Image (ECO CAR Banner) -->
-        <div class="w-full rounded-2xl overflow-hidden border border-brand-500/30 neon-glow bg-cardbg transition duration-300 hover:border-brand-500/60">
-            <img src="./cover.jpg" alt="TT AUTOTRADE โปรโมชัน ECO CAR ฟรียาง 4 เส้น" class="w-full h-auto object-cover block" onerror="this.src='https://i.postimg.cc/7CgPRSc1/1.jpg'">
-        </div>
-
-        <!-- Contact CTA Buttons (2 ปุ่มใหญ่กดง่าย) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-xl pt-2">
-            <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-2xl text-center transition flex items-center justify-center gap-3 text-lg shadow-lg shadow-emerald-600/30 hover:scale-[1.02]">
+        <!-- Contact CTA Buttons -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl mx-auto pt-4">
+            <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-2xl text-center transition flex items-center justify-center gap-3 text-base shadow-lg shadow-emerald-600/30">
                 <i class="fa-brands fa-line text-2xl"></i> ติดต่อสอบถามทาง Line
             </a>
-            <a href="tel:0831419999" class="bg-brand-500 hover:bg-brand-600 text-black font-bold py-4 px-6 rounded-2xl text-center transition flex items-center justify-center gap-3 text-lg neon-glow-btn hover:scale-[1.02]">
+            <a href="tel:0831419999" class="bg-brand-500 hover:bg-brand-600 text-black font-bold py-3.5 px-6 rounded-2xl text-center transition flex items-center justify-center gap-3 text-base shadow-lg shadow-brand-500/20">
                 <i class="fa-solid fa-phone text-xl"></i> โทรสายตรง 083-141-9999
             </a>
         </div>
@@ -97,7 +177,7 @@
 
     <!-- Footer -->
     <footer class="bg-zinc-950 border-t border-zinc-900 py-6 text-center text-xs text-zinc-500 space-y-1">
-        <p class="font-medium text-zinc-400">บริษัท ทีที ออโต้ เทรด จำกัด | โชว์รูมรถมือสองคัดเกรดคุณภาพ A+</p>
+        <p class="font-medium text-zinc-400">บริษัท ทีที ออโต้ เทรด จำกัด | ศูนย์รวมรถมือสองคัดเกรดคุณภาพ A+</p>
         <p>© 2026 TT AUTOTRADE. All Rights Reserved.</p>
     </footer>
 
