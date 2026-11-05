@@ -163,36 +163,69 @@
             </div>
         </div>
 
-        <!-- Inventory Card Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-cardbg rounded-2xl overflow-hidden border border-zinc-800 hover:border-brand-500/50 transition duration-300 flex flex-col group shadow-xl">
-                <div class="relative overflow-hidden aspect-[16/10] bg-zinc-900">
-                    <img src="https://lh3.googleusercontent.com/d/13e9aB-g6G203UvC-Xq8zKxYJpB-0y1xX" alt="Honda City RS" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <div class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-400 border border-brand-500/30">
-                        รถเข้าใหม่
+        <!-- Inventory Details with Built-in Gallery -->
+        <div class="bg-cardbg rounded-2xl overflow-hidden border border-zinc-800 p-6 md:p-8 shadow-2xl space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Main Cover Image -->
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[16/9] bg-zinc-900 border border-zinc-800">
+                        <img id="main-car-img" src="https://lh3.googleusercontent.com/d/13e9aB-g6G203UvC-Xq8zKxYJpB-0y1xX" alt="Honda City RS Front Cover" class="w-full h-full object-cover transition duration-300">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-400 border border-brand-500/30">
+                            รถเข้าใหม่ / หน้าปก
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs font-medium text-white flex items-center gap-1.5">
+                            <i class="fa-solid fa-camera text-brand-400"></i> 10 รูปคัดพิเศษ
+                        </div>
                     </div>
-                    <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-medium text-white flex items-center gap-1.5">
-                        <i class="fa-solid fa-camera text-brand-400"></i> 36 รูป
+
+                    <!-- Thumbnails List -->
+                    <div class="grid grid-cols-5 gap-2 pt-2">
+                        <img onclick="changeImage('https://lh3.googleusercontent.com/d/13e9aB-g6G203UvC-Xq8zKxYJpB-0y1xX')" src="https://lh3.googleusercontent.com/d/13e9aB-g6G203UvC-Xq8zKxYJpB-0y1xX" class="aspect-video object-cover rounded-lg border border-brand-500 cursor-pointer hover:opacity-80 transition">
+                        <img onclick="changeImage('https://lh3.googleusercontent.com/d/144-CityFront1')" src="https://lh3.googleusercontent.com/d/144-CityFront1" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition">
+                        <img onclick="changeImage('https://lh3.googleusercontent.com/d/145-CityRear1')" src="https://lh3.googleusercontent.com/d/145-CityRear1" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition">
+                        <img onclick="changeImage('https://lh3.googleusercontent.com/d/146-CitySideRear1')" src="https://lh3.googleusercontent.com/d/146-CitySideRear1" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition">
+                        <img onclick="changeImage('https://lh3.googleusercontent.com/d/147-CityInterior1')" src="https://lh3.googleusercontent.com/d/147-CityInterior1" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition">
                     </div>
                 </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
-                        <span>ปี 2022</span>
-                        <span>เกียร์อัตโนมัติ</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition mb-2">
-                        Honda City 1.5 RS e:HEV 2022
-                    </h3>
-                    <p class="text-xs text-zinc-400 line-clamp-2 mb-4 font-light">
-                        ตัวท็อปสุด RS สภาพสวยป้ายแดง ประหยัดน้ำมันด้วยระบบไฮบริด e:HEV อุปกรณ์ครบพร้อมใช้งาน
-                    </p>
-                    <div class="mt-auto pt-4 border-t border-zinc-800/80 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-zinc-500 block">ราคาพิเศษ</span>
-                            <span class="text-2xl font-black text-brand-400">ติดต่อโชว์รูม</span>
+
+                <!-- Info Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-semibold text-brand-400 mb-2">
+                            <span class="bg-brand-500/10 px-2.5 py-1 rounded-md border border-brand-500/20">ปี 2022</span>
+                            <span class="bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-md">เกียร์อัตโนมัติ</span>
+                            <span class="bg-zinc-800 text-zinc-300 px-2.5 py-1 rounded-md">เบนซิน ไฮบริด</span>
                         </div>
-                        <a href="https://drive.google.com/drive/folders/1GODEEjOFA3B6NOzUrcWuYZjdw0ssE4G1?usp=sharing" target="_blank" class="bg-brand-500 hover:bg-brand-600 text-black font-bold px-4 py-2.5 rounded-xl text-sm transition flex items-center gap-1.5">
-                            <i class="fa-solid fa-images"></i> ดูรูปภาพคันจริง
+                        <h3 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+                            Honda City 1.5 RS e:HEV 2022
+                        </h3>
+                        <p class="text-zinc-400 text-sm mt-3 leading-relaxed font-light">
+                            ตัวท็อปสุด RS สภาพสวยป้ายแดง ประหยัดน้ำมันสุดๆ ด้วยระบบ e:HEV ไฮบริด อุปกรณ์อำนวยความสะดวกครบครัน สภาพเดิมโรงงาน เบาะหนังสีดำด้ายแดงทรงสปอร์ตสวยสะอาด
+                        </p>
+                    </div>
+
+                    <div class="bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 space-y-2">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-zinc-400">สถานะรถ</span>
+                            <span class="text-emerald-400 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> พร้อมส่งมอบ</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-zinc-400">เอกสารการโอน</span>
+                            <span class="text-white font-medium">ชุดโอนครบ พร้อมโอนทันที</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm pt-2 border-t border-zinc-800">
+                            <span class="text-zinc-400">ข้อเสนอพิเศษ</span>
+                            <span class="text-brand-400 font-bold">ฟรีค่าจัด ฟรีค่าโอน</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 space-y-3">
+                        <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="w-full bg-brand-500 hover:bg-brand-600 text-black font-bold py-3.5 rounded-xl text-center block transition shadow-lg shadow-brand-500/25">
+                            <i class="fa-brands fa-line text-lg mr-1"></i> สอบถามราคาพิเศษผ่าน Line
+                        </a>
+                        <a href="https://drive.google.com/drive/folders/1GODEEjOFA3B6NOzUrcWuYZjdw0ssE4G1?usp=sharing" target="_blank" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-medium py-3 rounded-xl text-center block transition border border-zinc-700 text-sm">
+                            <i class="fa-solid fa-folder-open text-brand-400 mr-1"></i> สำรองไฟล์รูปใน Google Drive
                         </a>
                     </div>
                 </div>
@@ -235,5 +268,10 @@
         </div>
     </footer>
 
+    <script>
+        function changeImage(src) {
+            document.getElementById('main-car-img').src = src;
+        }
+    </script>
 </body>
 </html>
