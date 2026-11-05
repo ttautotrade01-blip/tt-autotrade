@@ -170,24 +170,24 @@
                 <!-- Main Cover Image -->
                 <div class="lg:col-span-7 space-y-4">
                     <div class="relative overflow-hidden rounded-2xl aspect-[16/9] bg-zinc-900 border border-zinc-800">
-                        <img id="main-car-img" src="./1_2.jpg" alt="Honda City RS Front Cover" class="w-full h-full object-cover transition duration-300">
+                        <img id="main-car-img" src="./1.jpg" alt="Honda City RS Front Cover" class="w-full h-full object-cover transition duration-300" onerror="this.src='https://lh3.googleusercontent.com/d/13e9aB-g6G203UvC-Xq8zKxYJpB-0y1xX'">
                         <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-brand-400 border border-brand-500/30">
                             รถเข้าใหม่ / คลิกรูปด้านล่างเพื่อเปลี่ยนรูปใหญ่
                         </div>
                     </div>
 
-                    <!-- Thumbnails List -->
+                    <!-- Thumbnails List (10 Photos) -->
                     <div class="grid grid-cols-5 gap-2 pt-2">
-                        <img onclick="changeImage('./1_2.jpg')" src="./1_2.jpg" class="aspect-video object-cover rounded-lg border border-brand-500 cursor-pointer hover:opacity-80 transition" title="ด้านหน้าเฉียง">
-                        <img onclick="changeImage('./2_2.jpg')" src="./2_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="ด้านหน้าตรง">
-                        <img onclick="changeImage('./3_2.jpg')" src="./3_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="ด้านหลังตรง">
-                        <img onclick="changeImage('./4_2.jpg')" src="./4_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="ด้านหลังเฉียง">
-                        <img onclick="changeImage('./DSC_1830_2.jpg')" src="./DSC_1830_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="เบาะหน้า">
-                        <img onclick="changeImage('./DSC_1831_2.jpg')" src="./DSC_1831_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="เบาะหลัง">
-                        <img onclick="changeImage('./DSC_1832_2.jpg')" src="./DSC_1832_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="คอนโซลกลาง">
-                        <img onclick="changeImage('./DSC_1833_2.jpg')" src="./DSC_1833_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="พวงมาลัย">
-                        <img onclick="changeImage('./DSC_1837_2.jpg')" src="./DSC_1837_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="หน้าจอสัมผัส">
-                        <img onclick="changeImage('./DSC_1882_2.jpg')" src="./DSC_1882_2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="ห้องเครื่อง">
+                        <img onclick="changeImage('./1.jpg')" src="./1.jpg" class="aspect-video object-cover rounded-lg border border-brand-500 cursor-pointer hover:opacity-80 transition" title="รูปที่ 1">
+                        <img onclick="changeImage('./2.jpg')" src="./2.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 2">
+                        <img onclick="changeImage('./3.jpg')" src="./3.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 3">
+                        <img onclick="changeImage('./4.jpg')" src="./4.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 4">
+                        <img onclick="changeImage('./5.jpg')" src="./5.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 5">
+                        <img onclick="changeImage('./6.jpg')" src="./6.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 6">
+                        <img onclick="changeImage('./7.jpg')" src="./7.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 7">
+                        <img onclick="changeImage('./8.jpg')" src="./8.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 8">
+                        <img onclick="changeImage('./9.jpg')" src="./9.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 9">
+                        <img onclick="changeImage('./10.jpg')" src="./10.jpg" class="aspect-video object-cover rounded-lg border border-zinc-800 cursor-pointer hover:border-brand-500 hover:opacity-80 transition" title="รูปที่ 10">
                     </div>
                 </div>
 
@@ -268,3 +268,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-900 pt-6 text-center text-xs text-zinc-600">
             © 2026 TT AUTOTRADE. All Rights Reserved.
         </div>
+    </footer>
+
+    <!-- Script to Handle Gallery Click -->
+    <script>
+        function changeImage(src) {
+            document.getElementById('main-car-img').src = src;
+        }
+    </script>
+</body>
+</html>
