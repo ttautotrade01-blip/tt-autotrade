@@ -47,7 +47,7 @@
         <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
             
             <!-- Logo -->
-            <a href="./index.html" class="flex items-center gap-3">
+            <a href="javascript:void(0)" onclick="showBannerView()" class="flex items-center gap-3">
                 <div class="w-11 h-11 bg-brand-500 rounded-full flex items-center justify-center text-black font-black text-xl border-2 border-brand-400 shadow-md shadow-brand-500/30">
                     TT
                 </div>
@@ -57,35 +57,19 @@
                 </div>
             </a>
 
-            <!-- Navigation Links (ปุ่มเมนูหลัก) -->
+            <!-- Navigation Links -->
             <nav class="hidden md:flex items-center gap-1 bg-surface/60 border border-zinc-800 p-1.5 rounded-2xl">
-                <a href="./index.html" class="px-4 py-2 rounded-xl text-sm font-bold bg-brand-500 text-black shadow-md shadow-brand-500/20 transition flex items-center gap-2">
+                <button onclick="showBannerView()" id="nav-home" class="px-4 py-2 rounded-xl text-sm font-bold bg-brand-500 text-black shadow-md shadow-brand-500/20 transition flex items-center gap-2">
                     <i class="fa-solid fa-house"></i> หน้าแรก
-                </a>
-                <a href="#inventory" class="px-4 py-2 rounded-xl text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800 transition flex items-center gap-2">
+                </button>
+                <button onclick="openSearch('ทั้งหมด')" id="nav-all" class="px-4 py-2 rounded-xl text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800 transition flex items-center gap-2">
                     <i class="fa-solid fa-car"></i> รถมือสองทั้งหมด
-                </a>
-                <a href="#search-section" class="px-4 py-2 rounded-xl text-sm font-medium text-zinc-300 hover:text-white hover:bg-zinc-800 transition flex items-center gap-2">
-                    <i class="fa-solid fa-magnifying-glass"></i> ค้นหารถ
-                </a>
+                </button>
             </nav>
 
             <!-- Phone CTA Button -->
             <a href="tel:0831419999" class="bg-brand-500 hover:bg-brand-600 text-black font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition flex items-center gap-2 shadow-lg shadow-brand-500/20">
                 <i class="fa-solid fa-phone"></i> <span class="hidden sm:inline">โทร</span> 083-141-9999
-            </a>
-        </div>
-
-        <!-- Mobile Menu Bar -->
-        <div class="flex md:hidden border-t border-zinc-800 bg-zinc-950 px-2 py-2 justify-around text-xs font-medium text-zinc-300">
-            <a href="./index.html" class="text-brand-400 font-bold flex items-center gap-1.5">
-                <i class="fa-solid fa-house"></i> หน้าแรก
-            </a>
-            <a href="#inventory" class="flex items-center gap-1.5 hover:text-white">
-                <i class="fa-solid fa-car"></i> รถมือสองทั้งหมด
-            </a>
-            <a href="#search-section" class="flex items-center gap-1.5 hover:text-white">
-                <i class="fa-solid fa-magnifying-glass"></i> ค้นหารถ
             </a>
         </div>
     </header>
@@ -95,70 +79,117 @@
         
         <div class="absolute inset-0 bg-grid-pattern opacity-25 pointer-events-none -z-10"></div>
 
-        <!-- Hero Section Grid: Banner + Quick Search Card -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
-            <!-- Left Banner (8 Columns) -->
+            <!-- Left Side Area (Displays Banner or Search Box dynamically) -->
             <div class="lg:col-span-8 space-y-4">
-                <div class="w-full rounded-2xl overflow-hidden border border-brand-500/30 neon-glow bg-cardbg">
+                
+                <!-- VIEW 1: Main Banner Image (Default) -->
+                <div id="banner-view" class="w-full rounded-2xl overflow-hidden border border-brand-500/30 neon-glow bg-cardbg">
                     <img src="./cover.jpg" alt="TT AUTOTRADE โปรโมชัน ECO CAR ฟรียาง 4 เส้น" class="w-full h-auto object-cover block" onerror="this.src='https://i.postimg.cc/7CgPRSc1/1.jpg'">
                 </div>
+
+                <!-- VIEW 2: Interactive Search Section (Hidden by Default) -->
+                <div id="search-finder-view" class="hidden bg-cardbg border border-zinc-800 rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl">
+                    <div class="flex items-center justify-between border-b border-zinc-800 pb-4">
+                        <div>
+                            <span id="category-badge" class="text-xs font-bold text-brand-400 uppercase tracking-wider">SEDAN FINDER</span>
+                            <h2 id="category-title" class="text-2xl md:text-3xl font-extrabold text-white mt-1">
+                                ค้นหารถเก๋งมือสอง ให้เจอรุ่นที่ต้องการได้เร็วขึ้น
+                            </h2>
+                        </div>
+                        <button onclick="showBannerView()" class="text-xs bg-zinc-800 hover:bg-zinc-700 text-zinc-300 px-3 py-1.5 rounded-lg border border-zinc-700">
+                            <i class="fa-solid fa-xmark mr-1"></i> ปิด
+                        </button>
+                    </div>
+
+                    <!-- Search Input Box -->
+                    <div class="space-y-3">
+                        <label class="text-sm font-semibold text-zinc-300">ค้นหายี่ห้อหรือรุ่นรถที่ต้องการในร้าน</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"></i>
+                            <input type="text" id="car-search-input" placeholder="พิมพ์ชื่อยี่ห้อหรือรุ่น เช่น Honda, Toyota, City, Jazz, Revo..." class="w-full bg-zinc-900 border border-zinc-700 rounded-xl py-3.5 pl-11 pr-16 text-white text-sm focus:outline-none focus:border-brand-500 transition">
+                            <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-brand-500 text-black font-bold px-4 py-2 rounded-lg text-xs hover:bg-brand-600 transition">
+                                ค้นหา
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Brand Tags -->
+                    <div class="space-y-2">
+                        <p class="text-xs text-zinc-400 font-medium">ยี่ห้อยอดนิยมในร้าน:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="fillSearch('HONDA')" class="bg-zinc-900 hover:bg-brand-500/20 border border-zinc-800 hover:border-brand-500 text-xs text-zinc-300 hover:text-brand-400 px-3 py-1.5 rounded-lg transition font-bold">HONDA</button>
+                            <button onclick="fillSearch('TOYOTA')" class="bg-zinc-900 hover:bg-brand-500/20 border border-zinc-800 hover:border-brand-500 text-xs text-zinc-300 hover:text-brand-400 px-3 py-1.5 rounded-lg transition font-bold">TOYOTA</button>
+                            <button onclick="fillSearch('ISUZU')" class="bg-zinc-900 hover:bg-brand-500/20 border border-zinc-800 hover:border-brand-500 text-xs text-zinc-300 hover:text-brand-400 px-3 py-1.5 rounded-lg transition font-bold">ISUZU</button>
+                            <button onclick="fillSearch('MAZDA')" class="bg-zinc-900 hover:bg-brand-500/20 border border-zinc-800 hover:border-brand-500 text-xs text-zinc-300 hover:text-brand-400 px-3 py-1.5 rounded-lg transition font-bold">MAZDA</button>
+                            <button onclick="fillSearch('NISSAN')" class="bg-zinc-900 hover:bg-brand-500/20 border border-zinc-800 hover:border-brand-500 text-xs text-zinc-300 hover:text-brand-400 px-3 py-1.5 rounded-lg transition font-bold">NISSAN</button>
+                        </div>
+                    </div>
+
+                    <!-- Contact Alert -->
+                    <div class="bg-zinc-900/80 border border-brand-500/20 rounded-xl p-4 flex items-center justify-between text-xs">
+                        <span class="text-zinc-300"><i class="fa-solid fa-headset text-brand-400 mr-1.5"></i> หารถรุ่นไหนไม่เจอ ทักสอบถามแอดมินทาง Line ได้ทันที</span>
+                        <a href="https://line.me/ti/p/@ttautotrade" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg">ทัก Line</a>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Right Quick Search Sidebar (4 Columns) -->
-            <div id="search-section" class="lg:col-span-4 bg-cardbg border border-zinc-800 rounded-2xl p-5 space-y-4 shadow-xl">
+            <!-- Right Sidebar: Category Selection Cards -->
+            <div class="lg:col-span-4 bg-cardbg border border-zinc-800 rounded-2xl p-5 space-y-4 shadow-xl">
                 <div>
                     <span class="text-xs font-bold text-brand-400 uppercase tracking-wider">FIND YOUR CAR</span>
                     <h3 class="text-xl font-extrabold text-white flex items-center gap-2 mt-0.5">
                         <i class="fa-solid fa-magnifying-glass text-brand-500"></i> ค้นหารถยนต์มือสอง
                     </h3>
-                    <p class="text-xs text-zinc-400 mt-1">เลือกประเภทรถตามสไตล์ที่ใช่สำหรับคุณ</p>
+                    <p class="text-xs text-zinc-400 mt-1">คลิกเลือกประเภทรถเพื่อค้นหาในร้าน</p>
                 </div>
 
-                <!-- Search Categories -->
+                <!-- Interactive Category Buttons -->
                 <div class="space-y-2">
-                    <a href="#inventory" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group">
+                    <button onclick="openSearch('รถเก๋ง')" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group text-left">
                         <div class="flex items-center gap-3">
                             <div class="w-9 h-9 bg-zinc-800 group-hover:bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center">
                                 <i class="fa-solid fa-car-side text-base"></i>
                             </div>
-                            <div class="text-left">
+                            <div>
                                 <p class="text-sm font-bold text-white group-hover:text-brand-400">รถเก๋ง / Sedan</p>
                             </div>
                         </div>
                         <i class="fa-solid fa-chevron-right text-xs text-zinc-500 group-hover:text-white"></i>
-                    </a>
+                    </button>
 
-                    <a href="#inventory" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group">
+                    <button onclick="openSearch('รถกระบะ')" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group text-left">
                         <div class="flex items-center gap-3">
                             <div class="w-9 h-9 bg-zinc-800 group-hover:bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center">
                                 <i class="fa-solid fa-truck-pickup text-base"></i>
                             </div>
-                            <div class="text-left">
+                            <div>
                                 <p class="text-sm font-bold text-white group-hover:text-brand-400">รถกระบะ / Pickup</p>
                             </div>
                         </div>
                         <i class="fa-solid fa-chevron-right text-xs text-zinc-500 group-hover:text-white"></i>
-                    </a>
+                    </button>
 
-                    <a href="#inventory" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group">
+                    <button onclick="openSearch('รถอเนกประสงค์')" class="w-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-brand-500/50 p-3 rounded-xl flex items-center justify-between transition group text-left">
                         <div class="flex items-center gap-3">
                             <div class="w-9 h-9 bg-zinc-800 group-hover:bg-brand-500/20 text-brand-400 rounded-lg flex items-center justify-center">
                                 <i class="fa-solid fa-car-rear text-base"></i>
                             </div>
-                            <div class="text-left">
+                            <div>
                                 <p class="text-sm font-bold text-white group-hover:text-brand-400">รถอเนกประสงค์ / SUV</p>
                             </div>
                         </div>
                         <i class="fa-solid fa-chevron-right text-xs text-zinc-500 group-hover:text-white"></i>
-                    </a>
+                    </button>
 
-                    <a href="#inventory" class="w-full bg-brand-500 hover:bg-brand-600 text-black font-bold p-3.5 rounded-xl flex items-center justify-between transition shadow-lg shadow-brand-500/20 mt-3">
+                    <button onclick="openSearch('ทั้งหมด')" class="w-full bg-brand-500 hover:bg-brand-600 text-black font-bold p-3.5 rounded-xl flex items-center justify-between transition shadow-lg shadow-brand-500/20 mt-3">
                         <span class="flex items-center gap-2 text-sm">
-                            <i class="fa-solid fa-list-ul"></i> ดูรถมือสองทั้งหมด
+                            <i class="fa-solid fa-list-ul"></i> ค้นหารถมือสองทั้งหมด
                         </span>
                         <i class="fa-solid fa-arrow-right text-sm"></i>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -181,5 +212,27 @@
         <p>© 2026 TT AUTOTRADE. All Rights Reserved.</p>
     </footer>
 
+    <!-- Interactive Search Switcher Script -->
+    <script>
+        function openSearch(type) {
+            document.getElementById('banner-view').classList.add('hidden');
+            document.getElementById('search-finder-view').classList.remove('hidden');
+            
+            document.getElementById('category-badge').innerText = type + ' FINDER';
+            document.getElementById('category-title').innerText = 'ค้นหา' + type + 'มือสอง ให้เจอรุ่นที่ต้องการได้เร็วขึ้น';
+            document.getElementById('car-search-input').placeholder = 'ค้นหา ' + type + ' เช่น Honda, Toyota, City, D-Max...';
+            
+            window.scrollTo({ top: 100, behavior: 'smooth' });
+        }
+
+        function showBannerView() {
+            document.getElementById('search-finder-view').classList.add('hidden');
+            document.getElementById('banner-view').classList.remove('hidden');
+        }
+
+        function fillSearch(brandName) {
+            document.getElementById('car-search-input').value = brandName;
+        }
+    </script>
 </body>
 </html>
