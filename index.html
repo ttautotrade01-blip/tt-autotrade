@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TT AUTOTRADE - ศูนย์รวมรถยนต์มือสองคุณภาพดี</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            400: '#4ade80',
+                            500: '#22c55e', // Vibrant Lime Green matching TT Logo
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            neon: '#39FF14'  // Electric Neon Green accent
+                        },
+                        darkbg: '#09090b',
+                        cardbg: '#18181b',
+                        surface: '#27272a'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts - Kanit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(34, 197, 94, 0.12) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.35);
+        }
+        .neon-border {
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22c55e;
+        }
+    </style>
+</head>
+<body class="bg-[#09090b] text-zinc-100 min-h-screen flex flex-col antialiased bg-grid-pattern">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-black via-zinc-900 to-black text-white text-xs sm:text-sm py-2 px-4 text-center font-medium border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-2">
+            <span class="hidden sm:inline"><i class="fa-solid fa-fire mr-1.5 text-lime-400"></i> โปรโมชันพิเศษ TT AUTOTRADE! ดอกเบี้ยเริ่มต้น 2.79% ออกรถ 0 บาท ฟรีประกันภัยชั้น 1</span>
+            <span class="sm:hidden font-semibold"><i class="fa-solid fa-car mr-1 text-brand-500"></i> TT AUTOTRADE รถมือสองคัดเกรด A+</span>
+            <div class="flex items-center space-x-4">
+                <a href="tel:0831419999" class="hover:text-brand-400 font-bold flex items-center gap-1.5 transition-colors text-brand-400"><i class="fa-solid fa-phone text-xs"></i> 083-141-9999</a>
+                <span class="text-zinc-700">|</span>
+                <span id="apiKeyStatus" class="cursor-pointer text-xs bg-zinc-900/90 px-2.5 py-1 rounded-full border border-brand-500/30 text-lime-400 flex items-center gap-1.5 hover:bg-black transition-all" onclick="openApiKeyModal()">
+                    <span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span> Gemini AI พร้อมทำงาน
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800/80 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo (Official TT AUTOTRADE Round Logo) -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="filterCategory('all')">
+                <div class="relative w-12 h-12 rounded-full overflow-hidden p-0.5 bg-gradient-to-br from-brand-400 via-lime-500 to-zinc-700 shadow-lg shadow-brand-500/20 border border-lime-400/50">
+                    <!-- Embedded TT AUTOTRADE Round Logo SVG/Data -->
+                    <svg viewBox="0 0 500 500" class="w-full h-full rounded-full bg-black">
+                        <circle cx="250" cy="250" r="235" fill="#000" stroke="#84cc16" stroke-width="15"/>
+                        <circle cx="250" cy="250" r="215" fill="#000" stroke="#fff" stroke-width="3"/>
+                        <g transform="translate(70, 130) scale(0.72)">
+                            <!-- Stylized Metallic TT Logo Representation -->
+                            <path d="M 30,30 L 220,30 L 190,80 L 130,80 L 80,220 L 25,220 Z" fill="url(#limeGrad)" />
+                            <path d="M 180,30 L 370,30 L 340,80 L 280,80 L 230,220 L 175,220 Z" fill="url(#silverGrad)" />
+                            <text x="210" y="140" font-family="'Kanit', sans-serif" font-weight="900" font-style="italic" font-size="52" fill="#ffffff">AUTO</text>
+                            <text x="200" y="210" font-family="'Kanit', sans-serif" font-weight="900" font-style="italic" font-size="58" fill="#22c55e">TRADE</text>
+                            <path d="M 0,230 Q 250,280 480,200 Q 250,250 0,230" fill="#22c55e" />
+                        </g>
+                        <defs>
+                            <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4ade80" />
+                                <stop offset="100%" stop-color="#15803d" />
+                            </linearGradient>
+                            <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="100%" stop-color="#94a3b8" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-white via-zinc-200 to-lime-400 bg-clip-text text-transparent">TT <span class="text-brand-500">AUTOTRADE</span></span>
+                    <p class="text-[10px] text-zinc-400 -mt-1 tracking-widest uppercase font-medium">ทีที ออโต้ เทรด • รถมือสองคัดเกรด</p>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <button onclick="filterCategory('all')" class="text-lime-400 hover:text-lime-300 transition-colors flex items-center gap-2 font-semibold">
+                    <i class="fa-solid fa-house text-xs"></i> หน้าแรก
+                </button>
+                <button onclick="scrollToSection('catalog')" class="text-zinc-300 hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-car text-xs"></i> รถมือสองทั้งหมด
+                </button>
+                <button onclick="openAddCarModal()" class="text-zinc-300 hover:text-white transition-colors flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 px-3.5 py-1.5 rounded-lg border border-zinc-800">
+                    <i class="fa-solid fa-plus text-brand-400 text-xs"></i> เพิ่มรถเข้าสต็อก
+                </button>
+                <button onclick="openApiKeyModal()" class="text-zinc-300 hover:text-white transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-key text-amber-400 text-xs"></i> ตั้งค่า API Key
+                </button>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="tel:0831419999" class="hidden sm:flex bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white px-3.5 py-2 rounded-xl text-xs font-semibold items-center gap-2 transition-all">
+                    <i class="fa-solid fa-phone text-brand-400"></i> 083-141-9999
+                </a>
+                <button onclick="openAddCarModal()" class="bg-gradient-to-r from-brand-500 to-brand-700 hover:from-brand-400 hover:to-brand-600 text-black font-extrabold px-4 py-2.5 rounded-xl text-sm transition-all duration-200 shadow-lg shadow-brand-500/25 border border-lime-400/40 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-plus"></i> <span class="hidden sm:inline">ลงขายรถใหม่</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+        <!-- Top Hero Section / Promos (Showroom Style Header) -->
+        <section class="relative rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-950">
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-zinc-950/90 to-transparent z-10"></div>
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80" alt="TT AUTOTRADE Showroom" class="absolute inset-0 w-full h-full object-cover object-center opacity-30">
+            
+            <div class="relative z-20 p-6 sm:p-10 lg:p-14 max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-500/15 border border-brand-500/30 text-lime-400 text-xs font-semibold mb-4">
+                    <i class="fa-solid fa-shield-halved text-brand-400"></i> TT AUTOTRADE - การันตีไม่ชนหนัก ไม่จมน้ำ 100%
+                </div>
+                <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-4">
+                    ศูนย์รวมรถมือสองคัดเกรด <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 via-brand-400 to-emerald-500">พร้อมผู้ช่วย Gemini AI อัจฉริยะ</span>
+                </h1>
+                <p class="text-zinc-300 text-sm sm:text-base mb-6 font-light leading-relaxed">
+                    เลือกรถยนต์สภาพป้ายแดงผ่านโชว์รูม TT AUTOTRADE พร้อมระบบ AI ช่วยดึงข้อมูลสเปกรถจากภาพถ่าย และคำนวณแผนจัดไฟแนนซ์ให้อัตโนมัติ
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#catalog" class="bg-brand-500 hover:bg-brand-400 text-black font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-brand-500/30 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-magnifying-glass"></i> ดูรถทั้งหมดในสต็อก
+                    </a>
+                    <a href="tel:0831419999" class="bg-zinc-900 hover:bg-zinc-800 text-white font-bold px-5 py-3 rounded-xl transition-all flex items-center gap-2 text-sm border border-zinc-700">
+                        <i class="fa-solid fa-phone text-brand-400"></i> โทร 083-141-9999
+                    </a>
+                    <button onclick="toggleAiChatModal()" class="bg-zinc-900/90 hover:bg-zinc-800/90 text-zinc-200 border border-zinc-700 font-medium px-5 py-3 rounded-xl transition-all flex items-center gap-2 text-sm backdrop-blur-sm">
+                        <i class="fa-solid fa-robot text-brand-400"></i> ปรึกษาไฟแนนซ์ AI
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3-Column Main Showroom Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="catalog">
+            
+            <!-- Left & Middle Section: Filter & Car Grid -->
+            <section class="lg:col-span-8 xl:col-span-9 space-y-6">
+                
+                <!-- Category Filter Buttons (Custom Match Logo Palette) -->
+                <div class="bg-zinc-900/90 p-4 rounded-2xl border border-zinc-800 shadow-xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-sm font-semibold text-zinc-200 flex items-center gap-2">
+                            <i class="fa-solid fa-filter text-brand-400"></i> ค้นหาตามประเภทรถยนต์
+                        </h3>
+                        <span id="carCountBadge" class="text-xs bg-zinc-950 text-zinc-300 px-3 py-1 rounded-full border border-zinc-800">
+                            พบทั้งหมด 0 คัน
+                        </span>
+                    </div>
+
+                    <!-- Category Pills -->
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="categoryTabs">
+                        <button onclick="filterCategory('all')" id="cat-all" class="cat-btn bg-brand-500 text-black font-bold p-3 rounded-xl flex flex-col items-center justify-center gap-1 border border-lime-400/50 shadow-md transition-all">
+                            <i class="fa-solid fa-border-all text-lg"></i>
+                            <span class="text-xs">ทั้งหมด</span>
+                        </button>
+                        <button onclick="filterCategory('Sedan')" id="cat-Sedan" class="cat-btn bg-zinc-950 hover:bg-zinc-800 text-zinc-300 p-3 rounded-xl flex flex-col items-center justify-center gap-1 border border-zinc-800 transition-all">
+                            <i class="fa-solid fa-car text-lg"></i>
+                            <span class="text-xs font-medium">รถเก๋ง (Sedan)</span>
+                        </button>
+                        <button onclick="filterCategory('Pickup')" id="cat-Pickup" class="cat-btn bg-zinc-950 hover:bg-zinc-800 text-zinc-300 p-3 rounded-xl flex flex-col items-center justify-center gap-1 border border-zinc-800 transition-all">
+                            <i class="fa-solid fa-truck-pickup text-lg"></i>
+                            <span class="text-xs font-medium">รถกระบะ (Pickup)</span>
+                        </button>
+                        <button onclick="filterCategory('SUV')" id="cat-SUV" class="cat-btn bg-zinc-950 hover:bg-zinc-800 text-zinc-300 p-3 rounded-xl flex flex-col items-center justify-center gap-1 border border-zinc-800 transition-all">
+                            <i class="fa-solid fa-car-side text-lg"></i>
+                            <span class="text-xs font-medium">รถอเนกประสงค์ (SUV)</span>
+                        </button>
+                        <button onclick="filterCategory('Van')" id="cat-Van" class="cat-btn bg-zinc-950 hover:bg-zinc-800 text-zinc-300 p-3 rounded-xl flex flex-col items-center justify-center gap-1 border border-zinc-800 transition-all col-span-2 sm:col-span-1">
+                            <i class="fa-solid fa-van-shuttle text-lg"></i>
+                            <span class="text-xs font-medium">รถตู้ (Van)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Input Bar & Price Filter -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"></i>
+                        <input type="text" id="searchInput" oninput="applyFilters()" placeholder="ค้นหารุ่นรถ, ยี่ห้อ, ปีรถ เช่น Honda Civic, Hilux..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-11 pr-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-zinc-200">
+                    </div>
+                    <select id="priceFilter" onchange="applyFilters()" class="bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-500 text-zinc-200">
+                        <option value="all">ทุกช่วงราคา</option>
+                        <option value="under300k">ไม่เกิน 300,000 บาท</option>
+                        <option value="300k-600k">300,000 - 600,000 บาท</option>
+                        <option value="over600k">600,000 บาทขึ้นไป</option>
+                    </select>
+                </div>
+
+                <!-- Car Grid Container -->
+                <div id="carGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <!-- Dynamic Car Cards rendered here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="emptyState" class="hidden text-center py-16 bg-zinc-900/50 rounded-2xl border border-zinc-800">
+                    <i class="fa-solid fa-car-burst text-5xl text-zinc-600 mb-3"></i>
+                    <h4 class="text-lg font-medium text-zinc-300">ไม่พบรายการรถตรงตามเงื่อนไข</h4>
+                    <p class="text-xs text-zinc-500 mt-1">ลองเปลี่ยนคำค้นหา หรือเลือกรถประเภทอื่นเพิ่มเติม</p>
+                </div>
+
+            </section>
+
+            <!-- Right Sidebar Panel: Highlights & Contact -->
+            <aside class="lg:col-span-4 xl:col-span-3 space-y-6">
+                
+                <!-- Showroom Highlights Card (TT AUTOTRADE Promos) -->
+                <div class="bg-gradient-to-br from-zinc-950 via-zinc-900 to-black p-5 rounded-2xl border border-brand-500/30 shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 opacity-10 text-brand-500 text-9xl pointer-events-none">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="bg-brand-500 text-black text-[10px] uppercase font-black tracking-wider px-2.5 py-1 rounded-md inline-block mb-3">
+                        TT AUTOTRADE
+                    </span>
+                    <h3 class="text-lg font-bold text-white mb-2">รับประกันคุณภาพเกรด A+</h3>
+                    <p class="text-xs text-zinc-300 mb-4 leading-relaxed">
+                        ผ่านการตรวจเช็ก 210 จุดเต็มระบบ การันตีคืนเงิน 100% หากพบว่ามีชนหนัก ตัดต่อ หรือจมน้ำ
+                    </p>
+                    <ul class="text-xs text-zinc-300 space-y-2.5 border-t border-zinc-800 pt-3">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-400"></i> บริการเซ็นไฟแนนซ์ถึงบ้านฟรี 77 จังหวัด</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-400"></i> ดอกเบี้ยพิเศษเริ่มต้น 2.79%</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-400"></i> มีสถาบันการเงินรองรับกว่า 10 แห่ง</li>
+                    </ul>
+                    <a href="tel:0831419999" class="mt-4 w-full bg-brand-500 hover:bg-brand-400 text-black text-xs py-2.5 px-3 rounded-xl font-extrabold flex items-center justify-center gap-2 transition-all shadow-md">
+                        <i class="fa-solid fa-phone"></i> โทรสายด่วน 083-141-9999
+                    </a>
+                </div>
+
+                <!-- AI Quick Assist Box -->
+                <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 shadow-xl">
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-white">Gemini Smart Assistant</h4>
+                            <p class="text-[10px] text-zinc-400">ระบบ AI อัจฉริยะประจำโชว์รูม</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-zinc-300 mb-4 leading-relaxed">
+                        ต้องการสแกนรูป ดึงรายละเอียดรถ หรือประเมินแผนจัดไฟแนนซ์? เลือกใช้งานเครื่องมือ AI ด้านล่าง
+                    </p>
+                    <div class="space-y-2">
+                        <button onclick="openAddCarModal()" class="w-full bg-zinc-950 hover:bg-zinc-800 text-zinc-200 text-xs py-2.5 px-3 rounded-xl border border-zinc-800 flex items-center justify-between transition-all">
+                            <span><i class="fa-solid fa-image text-brand-400 mr-1.5"></i> สแกนรูปถ่ายรถด้วย AI</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] text-zinc-500"></i>
+                        </button>
+                        <button onclick="toggleAiChatModal()" class="w-full bg-zinc-950 hover:bg-zinc-800 text-zinc-200 text-xs py-2.5 px-3 rounded-xl border border-zinc-800 flex items-center justify-between transition-all">
+                            <span><i class="fa-solid fa-calculator text-brand-400 mr-1.5"></i> ให้ AI คํานวณตารางผ่อน</span>
+                            <i class="fa-solid fa-chevron-right text-[10px] text-zinc-500"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contact Box -->
+                <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 text-xs space-y-3">
+                    <h4 class="font-bold text-zinc-200 flex items-center gap-2">
+                        <i class="fa-solid fa-headset text-brand-400"></i> ติดต่อ TT AUTOTRADE
+                    </h4>
+                    <p class="text-zinc-400">เปิดให้บริการทุกวัน 08.30 - 18.00 น.</p>
+                    <div class="pt-2 border-t border-zinc-800 space-y-2.5">
+                        <a href="tel:0831419999" class="flex items-center gap-2.5 text-brand-400 font-bold hover:underline text-sm">
+                            <i class="fa-solid fa-phone text-xs"></i> 083-141-9999
+                        </a>
+                        <a href="#" class="flex items-center gap-2.5 text-zinc-300 hover:text-white transition-colors">
+                            <i class="fa-brands fa-line text-emerald-400 text-sm"></i> @TTAUTOTRADE
+                        </a>
+                        <a href="#" class="flex items-center gap-2.5 text-zinc-300 hover:text-white transition-colors">
+                            <i class="fa-brands fa-facebook text-blue-400 text-sm"></i> TT AUTOTRADE รถมือสองคุณภาพ
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 bg-zinc-950 border-t border-zinc-800/80 text-xs text-zinc-500 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center gap-2">
+                <span class="text-base font-black text-white">TT <span class="text-brand-500">AUTOTRADE</span></span>
+            </div>
+            <p>© 2026 TT AUTOTRADE - ศูนย์รวมรถยนต์มือสองคุณภาพดี โทร. 083-141-9999</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Code Remaining Unchanged ... -->
+<!-- ... existing code -->
